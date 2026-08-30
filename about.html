@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About — Zach Thesier</title>
-  <link rel="stylesheet" href="css/styles.css?v=49" />
+  <link rel="stylesheet" href="css/styles.css?v=64" />
 </head>
 <body>
+  <div class="page-content about-page-content">
   <header class="site-nav">
     <a class="site-logo" href="work.html">Zach Thesier</a>
     <button class="menu-icon-btn" type="button" aria-label="Open menu" aria-expanded="false">
@@ -45,36 +46,73 @@
     </div>
   </div>
 
-  <div class="container">
-    <section class="about-hero">
-      <div>
-        <h2>About</h2>
-        <p>
-          A short bio goes here — who you are, how you approach design, and
-          what kind of problems you like to work on. Two to three sentences
-          is usually enough.
-        </p>
-        <ul class="skills-list">
-          <li>User Research</li>
-          <li>Wireframing</li>
-          <li>Prototyping</li>
-          <li>Design Systems</li>
-          <li>Figma</li>
-        </ul>
-        <a class="btn" href="#">Download Résumé</a>
+  <section class="about-hero">
+    <div class="about-hero-content">
+      <div class="about-hero-text">
+        <h3>I&rsquo;m a Senior Product Designer based in Salt Lake City, specializing in complex problem spaces and design systems that scale. My work tends to involve products where the data is dense, the users are experts, and the margin for confusion is low.</h3>
       </div>
-      <img src="images/headshot-placeholder.jpg" alt="Portrait of Zach Thesier" />
-    </section>
+      <div class="about-hero-photos">
+        <img src="images/about/traveling.png" alt="Zach photographing a canal in Amsterdam" />
+        <img src="images/about/climbing.png" alt="Zach bouldering on a rock face" />
+        <img src="images/about/hiking.png" alt="Zach hiking a forest trail" />
+        <img src="images/about/backpacking.png" alt="Zach backpacking in the mountains" />
+        <img src="images/about/fiance.png" alt="Zach with his fianc&eacute;e" />
+      </div>
+    </div>
+  </section>
 
-    <footer class="site-footer">
-      <span class="text-secondary">© 2026 Zach Thesier</span>
-      <div>
-        <a href="mailto:you@example.com">Email</a>
+  <section class="about-bio">
+    <h1>About</h1>
+    <hr class="about-divider" />
+    <div class="about-bio-grid">
+      <div class="about-bio-meta">
+        <h3>Hey, I&rsquo;m Zach!</h3>
+        <p class="text-secondary">1997 - Current</p>
       </div>
-    </footer>
+      <div class="about-bio-text">
+        <p>I&rsquo;m a senior product designer with experience spanning cybersecurity, fintech, eCommerce, and political tech, across agencies, startups, and large enterprises. Every environment has been different, but each one required ramping quickly in a complex problem space and making dense, high-stakes products feel intuitive.</p>
+        <p>My work tends to involve products where the stakes are high and the users are experts. Small business owners managing margins and ad spend, or security analysts deciding which vulnerabilities to prioritize in an industry full of noise. I dig into the problem first: talking to users, and staying close to my PM and engineering counterparts throughout.</p>
+        <p>Although I consider myself a bit of a generalist, I keep getting pulled toward design systems, high-craft UI, and user research. Lately I&rsquo;ve been experimenting with Claude Code &mdash; cleaning up UI and pushing my own MRs.</p>
+        <p>Based in Salt Lake City, I spend most of my free time outside: hiking, climbing, running, camping, snowboarding. When I slow down it&rsquo;s usually to work on photo books, read, or add another piece to my growing collection of hand-thrown pottery.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-experience">
+    <h1>Experience</h1>
+    <hr class="about-divider" />
+    <div class="about-bio-grid">
+      <div class="about-bio-meta">
+        <h3>Senior Product Designer</h3>
+        <p class="text-secondary"><a href="#">ReliaQuest</a> | February 2024 - Current</p>
+      </div>
+      <div class="about-bio-text">
+        <p>Led design of a new 0 - 1 capability, expanding GreyMatter from incident response into asset visibility and exposure management, <strong>generating $1.5M in revenue</strong> within the first quarter of launch. Spearheaded a full redesign of reporting to enable custom dashboards and scheduled reporting, improving visibility for customers. Drove a platform-wide filtering overhaul through a design systems initiative, increasing consistency and scalability across the product. Collaborated closely with product and engineering teams to deliver high-impact solutions under tight timelines for executive-priority initiatives.</p>
+      </div>
+    </div>
+    <hr class="about-divider" />
+    <div class="about-bio-grid">
+      <div class="about-bio-meta">
+        <h3>Product Designer</h3>
+        <p class="text-secondary"><a href="#">Underbelly</a> | April 2021 - January 2024</p>
+      </div>
+      <div class="about-bio-text">
+        <p>Embedded as a contract product designer at <strong>Meta</strong>, <strong>Square</strong>, and <strong>Vivint</strong>, rapidly onboarding to complex ecosystems and delivering high-impact product improvements within fixed engagement timelines. Led redesign initiatives across fintech, smart home, and advertising platforms, including launching revenue-driving mobile experiences that <strong>increased eCommerce traffic by 109%</strong>, enabling self-serve financial controls, and enhancing dashboard functionality. Outside of contract engagements, designed internal tools, venture-backed marketing sites, and facilitated accelerated design sprints.</p>
+      </div>
+    </div>
+  </section>
   </div>
 
+  <footer class="site-footer">
+    <h2>You have<br />reached the end.</h2>
+    <nav class="site-footer-nav">
+      <a href="work.html">Work</a>
+      <a href="about.html">About</a>
+      <a href="photos.html">Photos</a>
+    </nav>
+  </footer>
+
   <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
-  <script src="js/main.js?v=63"></script>
+  <script src="js/main.js?v=67"></script>
 </body>
 </html>

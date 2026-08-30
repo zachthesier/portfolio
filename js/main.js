@@ -110,6 +110,21 @@ if (aboutTriggerLink && aboutPreview) {
   });
 }
 
+// Reveal-footer effect: the footer sits fixed behind the page content, and
+// the content reserves exactly the footer's own height at its bottom edge —
+// like a card sliding up to expose the card underneath it.
+const pageContent = document.querySelector(".page-content");
+const siteFooter = document.querySelector(".site-footer");
+
+if (pageContent && siteFooter) {
+  const syncFooterSpacing = () => {
+    pageContent.style.marginBottom = `${siteFooter.offsetHeight}px`;
+  };
+
+  syncFooterSpacing();
+  window.addEventListener("resize", syncFooterSpacing);
+}
+
 const caseHeaderText = document.querySelector(".case-header-text");
 const heroImageWrap = document.querySelector(".case-hero-image-wrap");
 const heroImage = heroImageWrap?.querySelector("img");
@@ -280,37 +295,49 @@ if (isDesktopArcLayout) {
   const desiredViewportTop = (window.innerHeight - initialRect.height) / 2;
   scrollToY(initialDocTop - desiredViewportTop);
 
-  const ENTRANCE_DELAY = 400;
-  const ENTRANCE_DISSOLVE_DURATION = 500;
-  const ENTRANCE_DISSOLVE_EASING = "cubic-bezier(0.16, 1, 0.3, 1)";
+  const ENTRANCE_DISSOLVE_DURATION = 900;
+  const ENTRANCE_DISSOLVE_EASING = "ease-out";
+  const CARDS_FADE_DELAY = 1500;
+  const TEXT_FADE_DELAY = CARDS_FADE_DELAY + 500;
+  const NAV_FADE_DELAY = TEXT_FADE_DELAY + 800;
 
-  arcContainer.querySelectorAll(".home-card").forEach((card) => {
-    card.style.transition = "none";
-    card.style.opacity = "0";
-  });
+  // Fades a group of elements in together, `delay` after entrance kicks off.
+  const fadeInEntrance = (elements, delay) => {
+    const els = elements.filter(Boolean);
+    if (!els.length) return;
 
-  document.body.classList.remove("entrance-pending");
+    els.forEach((el) => {
+      el.style.transition = "none";
+      el.style.opacity = "0";
+    });
 
-  requestAnimationFrame(() => {
     requestAnimationFrame(() => {
-      arcContainer.querySelectorAll(".home-card").forEach((card) => {
-        card.style.transition = `opacity ${ENTRANCE_DISSOLVE_DURATION}ms ${ENTRANCE_DISSOLVE_EASING}`;
-      });
-
-      setTimeout(() => {
-        arcContainer.querySelectorAll(".home-card").forEach((card) => {
-          card.style.opacity = "1";
+      requestAnimationFrame(() => {
+        els.forEach((el) => {
+          el.style.transition = `opacity ${ENTRANCE_DISSOLVE_DURATION}ms ${ENTRANCE_DISSOLVE_EASING}`;
         });
 
         setTimeout(() => {
-          arcContainer.querySelectorAll(".home-card").forEach((card) => {
-            card.style.opacity = "";
-            card.style.transition = "";
+          els.forEach((el) => {
+            el.style.opacity = "1";
           });
-        }, ENTRANCE_DISSOLVE_DURATION);
-      }, ENTRANCE_DELAY);
+
+          setTimeout(() => {
+            els.forEach((el) => {
+              el.style.opacity = "";
+              el.style.transition = "";
+            });
+          }, ENTRANCE_DISSOLVE_DURATION);
+        }, delay);
+      });
     });
-  });
+  };
+
+  fadeInEntrance(Array.from(arcContainer.querySelectorAll(".home-card")), CARDS_FADE_DELAY);
+  fadeInEntrance([document.querySelector(".home-intro-text-arc")], TEXT_FADE_DELAY);
+  fadeInEntrance([document.querySelector(".site-nav")], NAV_FADE_DELAY);
+
+  document.body.classList.remove("entrance-pending");
 
   const updateArcCards = () => {
     const vw = window.innerWidth;
